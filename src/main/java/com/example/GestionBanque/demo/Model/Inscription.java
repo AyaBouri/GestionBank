@@ -1,40 +1,24 @@
 package com.example.GestionBanque.demo.Model;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.ManyToOne;
 import java.sql.Date;
+import java.util.List;
 @Entity
-public class User {
+public class Inscription {
     @Id
     private String Id;
-    private String username;
-    private String email;
+    private String userName;
     private String phone;
+    private String email;
     private String adresse;
     private String ville;
     private String pays;
     private String identity;
     private Date dateNaissance;
-    @OneToOne
-    private Login login;
-    @OneToOne
-    private Inscription inscription;
-
-    public Inscription getInscription() {
-        return inscription;
-    }
-
-    public void setInscription(Inscription inscription) {
-        this.inscription = inscription;
-    }
-
-    public Login getLogin() {
-        return login;
-    }
-
-    public void setLogin(Login login) {
-        this.login = login;
-    }
+    private Date dateInscription;
+    @ManyToOne
+    private List<User> users;
 
     public String getId() {
         return Id;
@@ -44,20 +28,12 @@ public class User {
         Id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getPhone() {
@@ -66,6 +42,14 @@ public class User {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getAdresse() {
@@ -106,5 +90,21 @@ public class User {
 
     public void setDateNaissance(Date dateNaissance) {
         this.dateNaissance = dateNaissance;
+    }
+
+    public Date getDateInscription() {
+        return dateInscription;
+    }
+
+    public void setDateInscription(Date dateInscription) {
+        this.dateInscription = dateInscription;
+    }
+
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
     }
 }
