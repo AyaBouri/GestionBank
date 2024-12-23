@@ -1,6 +1,7 @@
 package com.example.GestionBanque.demo.Model;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import java.sql.Date;
 import java.util.List;
@@ -17,8 +18,17 @@ public class Inscription {
     private String identity;
     private Date dateNaissance;
     private Date dateInscription;
-    @ManyToOne
+    @ManyToMany
     private List<User> users;
+    private String Role;
+
+    public String getRole() {
+        return Role;
+    }
+
+    public void setRole(String role) {
+        Role = role;
+    }
 
     public String getId() {
         return Id;
